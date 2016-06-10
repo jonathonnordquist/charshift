@@ -8,12 +8,18 @@ module Helper
     end
   end
 
-  def self.get_abs_shift_diff input_val, collection_length
+  def self.get_shift_diff input_val, collection_length
     abs_input_val = input_val.abs
     if abs_input_val > collection_length
-      return abs_input_val % collection_length
+      if input_val > 0
+        return abs_input_val % collection_length
+      elsif input_val < 0
+        return 0 - (abs_input_val % collection_length)
+      else
+        return 0
+      end
     else
-      return abs_input_val
+      return input_val
     end
   end
 
