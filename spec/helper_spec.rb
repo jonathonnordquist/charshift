@@ -39,4 +39,11 @@ describe 'Helper module' do
       expect(Helper.get_char_by_ord(0)).to eq("\x00")
     end
   end
+
+  describe 'get_ord_by_char method' do
+    it 'returns the ordinal position for the input character' do
+      expect(Helper.get_ord_by_char('A')).to eq(65)
+      expect(Helper.get_ord_by_char(" ")).to eq(32)
+    end
+  end
 end

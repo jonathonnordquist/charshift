@@ -20,4 +20,8 @@ module Helper
   def self.get_char_by_ord ordinal_value
     return ordinal_value.chr
   end
+
+  def self.get_ord_by_char character
+    return character.ord
+  end
 end
