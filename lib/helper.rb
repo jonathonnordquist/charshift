@@ -17,6 +17,18 @@ module Helper
     end
   end
 
+  def self.get_shift_position starting_pos, shift_val
+    collection_length = 128
+    start_plus_shift = starting_pos + shift_val
+    if start_plus_shift > collection_length
+      return 0 + start_plus_shift - collection_length
+    elsif start_plus_shift < 0
+      return collection_length + start_plus_shift
+    else
+      return start_plus_shift
+    end
+  end
+
   def self.get_char_by_ord ordinal_value
     return ordinal_value.chr
   end

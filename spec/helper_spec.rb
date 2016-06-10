@@ -33,6 +33,15 @@ describe 'Helper module' do
     end
   end
 
+  describe 'get_shift_position method' do
+    it 'returns the correct position on the character table as determined by the shift value' do
+      expect(Helper.get_shift_position(77, 5)).to eq(82)
+      expect(Helper.get_shift_position(122, 50)).to eq(44)
+      expect(Helper.get_shift_position(110, -10)).to eq(100)
+      expect(Helper.get_shift_position(10, -20)).to eq(118)
+    end
+  end
+
   describe 'get_char_by_ord method' do
     it 'returns the correct value for a specific ordinal position' do
       expect(Helper.get_char_by_ord(47)).to eq("/")
@@ -46,4 +55,5 @@ describe 'Helper module' do
       expect(Helper.get_ord_by_char(" ")).to eq(32)
     end
   end
+
 end
