@@ -23,10 +23,12 @@ describe 'Helper module' do
 
   describe 'get_abs_shift_diff method' do
     it 'returns the correct total distance to shift including overflow' do
-      expect(including_class.get_abs_shift_diff(3, 10)).to eq(1)
-      expect(including_class.get_abs_shift_diff(21, 57000)).to eq(6)
-      expect(including_class.get_abs_shift_diff(-3, 10)).to eq(-1)
-      expect(including_class.get_abs_shift_diff(-96, 64871)).to eq(-71)
+      expect(including_class.get_abs_shift_diff(3, 10)).to eq(3)
+      expect(including_class.get_abs_shift_diff(21, 57000)).to eq(21)
+      expect(including_class.get_abs_shift_diff(55, 10)).to eq(5)
+      expect(including_class.get_abs_shift_diff(5541, 23)).to eq(21)
+      expect(including_class.get_abs_shift_diff(-96, 64871)).to eq(96)
+      expect(including_class.get_abs_shift_diff(-5541, 23)).to eq(21)
       expect(including_class.get_abs_shift_diff(0, 54)).to eq(0)
     end
   end
