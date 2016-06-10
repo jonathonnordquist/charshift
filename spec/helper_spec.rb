@@ -32,4 +32,11 @@ describe 'Helper module' do
       expect(including_class.get_abs_shift_diff(0, 54)).to eq(0)
     end
   end
+
+  describe 'get_char_by_ord method' do
+    it 'returns the correct value for a specific ordinal position' do
+      expect(including_class.get_char_by_ord(47)).to eq("/")
+      expect(including_class.get_char_by_ord(0)).to eq("\x00")
+    end
+  end
 end
