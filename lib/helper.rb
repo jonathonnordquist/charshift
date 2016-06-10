@@ -1,6 +1,6 @@
 module Helper
 
-  def confirm_int input_val
+  def self.confirm_int input_val
     if !input_val.instance_of? Fixnum
       raise TypeError, 'Input value must be of type integer'
     else
@@ -8,7 +8,7 @@ module Helper
     end
   end
 
-  def get_abs_shift_diff input_val, collection_length
+  def self.get_abs_shift_diff input_val, collection_length
     abs_input_val = input_val.abs
     if abs_input_val > collection_length
       return abs_input_val % collection_length
@@ -17,7 +17,7 @@ module Helper
     end
   end
 
-  def get_char_by_ord ordinal_value
+  def self.get_char_by_ord ordinal_value
     return ordinal_value.chr
   end
 end
