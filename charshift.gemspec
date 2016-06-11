@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.summary     = "Facilitate character change by ordinal position"
   s.authors     = ["Jonathon Nordquist"]
   s.email       = 'jonathon.nordquist@gmail.com'
-  s.files       = []
+  s.files       = ["lib/charshift.rb", "lib/charshifthelper.rb"]
   s.homepage    =
     'http://www.jonathonnordquist.com'
   s.license       = 'MIT'
