@@ -26,16 +26,16 @@ module CharshiftHelper
   def self.get_shift_position starting_pos, shift_val
     collection_length = 128
     start_plus_shift = starting_pos + shift_val
-    p "start_plus_shift"
-    p start_plus_shift
+    # p "start_plus_shift"
+    # p start_plus_shift
     if start_plus_shift > collection_length
-      p "bigger"
+      # p "bigger"
       return 0 + start_plus_shift - collection_length
     elsif start_plus_shift < 0
-      p "smaller"
+      # p "smaller"
       return collection_length + start_plus_shift
     else
-      p "neither"
+      # p "neither"
       return start_plus_shift
     end
   end

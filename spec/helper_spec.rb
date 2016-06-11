@@ -39,7 +39,7 @@ describe 'CharshiftHelper module' do
       expect(CharshiftHelper.get_shift_position(122, 50)).to eq(44)
       expect(CharshiftHelper.get_shift_position(110, -10)).to eq(100)
       expect(CharshiftHelper.get_shift_position(10, -20)).to eq(118)
-      epxect(CharshiftHelper.get_shift_position(1, 385)).to eq(2)
+      expect(CharshiftHelper.get_shift_position(1, 385)).to eq(2)
     end
   end
 
