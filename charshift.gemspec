@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'charshift01'
+  s.name        = 'charshift'
   s.version     = '0.1.0'
   s.date        = '2016-06-10'
   s.summary     = "Facilitate character change by ordinal position"
