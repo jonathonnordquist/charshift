@@ -17,7 +17,12 @@ describe 'Charshift gem' do | |
     expect(string1.charshift(-60)).to eq("\x1786-2+d32)")
     expect(string2.charshift(10)).to eq("]")
     expect(string2.charshift(110)).to eq("A")
+    expect(string2.charshift(900)).to eq("W")
     expect(string2.charshift(-10)).to eq("I")
     expect(string2.charshift(-110)).to eq("e")
+    expect(string2.charshift(-900)).to eq("O")
   end
 end
+
+
+4
