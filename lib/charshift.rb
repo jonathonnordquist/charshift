@@ -3,7 +3,7 @@ require 'charshifthelper'
 class String
   def charshift char_shift_val
     begin
-      CharshiftHelper.confirm_int(char_shift_val)
+      CharshiftHelper.confirm_fixnum(char_shift_val)
     rescue TypeError => e
       raise
     else

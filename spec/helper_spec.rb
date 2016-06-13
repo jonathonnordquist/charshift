@@ -3,33 +3,33 @@ require 'charshifthelper'
 describe 'CharshiftHelper module' do
   let(:including_class) { Class.new { extend CharshiftHelper } }
 
-  describe 'confirm_int method' do
-    let(:type_error) { 'Input value must be of type integer' }
+  describe 'confirm_fixnum method' do
+    let(:type_error) { 'Input value must be of type fixnum' }
 
     it 'raises an exception if it does not recieve an object of type int' do
       expect {
-        CharshiftHelper.confirm_int("aaaa")
+        CharshiftHelper.confirm_fixnum("aaaa")
       }.to raise_error(type_error)
 
       expect {
-        CharshiftHelper.confirm_int(0.7)
+        CharshiftHelper.confirm_fixnum(0.7)
       }.to raise_error(type_error)
     end
 
     it 'returns true if it recieves an object of type int' do
-      expect(CharshiftHelper.confirm_int(7)).to be true
+      expect(CharshiftHelper.confirm_fixnum(7)).to be true
     end
   end
 
-  describe 'get_shift_diff method' do
+  describe 'get_shift_distance_minus_loops method' do
     it 'returns the correct total distance to shift including overflow' do
-      expect(CharshiftHelper.get_shift_diff(3, 10)).to eq(3)
-      expect(CharshiftHelper.get_shift_diff(21, 57000)).to eq(21)
-      expect(CharshiftHelper.get_shift_diff(55, 10)).to eq(5)
-      expect(CharshiftHelper.get_shift_diff(5541, 23)).to eq(21)
-      expect(CharshiftHelper.get_shift_diff(-96, 64871)).to eq(-96)
-      expect(CharshiftHelper.get_shift_diff(-5541, 23)).to eq(-21)
-      expect(CharshiftHelper.get_shift_diff(0, 54)).to eq(0)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(3, 10)).to eq(3)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(21, 57000)).to eq(21)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(55, 10)).to eq(5)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(5541, 23)).to eq(21)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(-96, 64871)).to eq(-96)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(-5541, 23)).to eq(-21)
+      expect(CharshiftHelper.get_shift_distance_minus_loops(0, 54)).to eq(0)
     end
   end
 

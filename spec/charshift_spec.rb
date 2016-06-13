@@ -4,7 +4,7 @@ describe 'Charshift gem' do | |
   let(:string1) { "String one" }
   let(:string2) { "S" }
   let(:type_error) { TypeError }
-  let(:type_error_text) { "Input value must be of type integer" }
+  let(:type_error_text) { "Input value must be of type fixnum" }
 
   describe 'charshift method' do 
     it "returns an object of type string" do
