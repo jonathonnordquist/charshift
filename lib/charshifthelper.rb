@@ -10,14 +10,9 @@ module CharshiftHelper
 
   def self.get_shift_distance_minus_loops input_val, collection_length
     absloute_input_val = input_val.abs
+    remaining_difference = absloute_input_val % collection_length
     if absloute_input_val > collection_length
-      if input_val > 0
-        return absloute_input_val % collection_length
-      elsif input_val < 0
-        return 0 - (absloute_input_val % collection_length)
-      else
-        return 0
-      end
+      return input_val > 0 ? remaining_difference : 0 - remaining_difference
     else
       return input_val
     end
