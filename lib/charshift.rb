@@ -5,7 +5,7 @@ class String
     begin
       CharshiftHelper.confirm_int(char_shift_val)
     rescue TypeError => e
-      e
+      raise
     else
       output = ""
       self.split("").each do |char|
