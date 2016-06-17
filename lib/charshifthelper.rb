@@ -38,4 +38,28 @@ module CharshiftHelper
   def self.get_ord_by_char character
     return character.ord
   end
+
+  def self.get_encoding_length encoding
+    max = 100000000000
+    min = 0
+    guess = 50000000000
+
+    while true
+      begin guess.chr(encoding)
+        if (min > max)
+          return max
+        else
+          min = guess + 1
+          guess = (max + min) / 2
+        end
+      rescue
+        if min > max
+          return max
+        else
+          max = guess - 1
+          guess = (max + min) / 2
+        end
+      end
+    end
+  end
 end

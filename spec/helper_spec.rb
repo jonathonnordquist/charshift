@@ -60,4 +60,14 @@ describe 'CharshiftHelper module' do
     end
   end
 
+  describe 'get_encoding_length method' do
+    it 'returns the number of available positons for a given encoding' do
+      expect(CharshiftHelper.get_encoding_length("ASCII-8BIT")).to eq(255)
+      expect(CharshiftHelper.get_encoding_length("UTF-16BE")).to eq(1114111)
+      expect(CharshiftHelper.get_encoding_length("UTF-32")).to eq(4294967295)
+      expect(CharshiftHelper.get_encoding_length("GB18030")).to eq(64766)
+      expect(CharshiftHelper.get_encoding_length("Shift_JIS")).to eq(223)
+    end
+  end 
+
 end
