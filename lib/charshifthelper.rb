@@ -18,8 +18,8 @@ module CharshiftHelper
     end
   end
 
-  def self.get_shift_position starting_pos, shift_val
-    collection_length = 128
+  def self.get_shift_position starting_pos, shift_val, encoding_length
+    collection_length = encoding_length
     shift_difference = self.get_shift_distance_minus_loops(shift_val, collection_length)
     start_plus_shift = starting_pos + shift_difference
     if start_plus_shift > collection_length
@@ -31,12 +31,16 @@ module CharshiftHelper
     end
   end
 
-  def self.get_char_by_ord ordinal_value
-    return ordinal_value.chr
+  def self.get_char_by_ord ordinal_value, char_encoding_type
+    return ordinal_value.chr(char_encoding_type)
   end
 
   def self.get_ord_by_char character
     return character.ord
+  end
+
+  def self.get_encoding string
+    return string.encoding.to_s
   end
 
   def self.get_encoding_length encoding

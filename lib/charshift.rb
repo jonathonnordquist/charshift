@@ -9,9 +9,11 @@ class String
     else
       output = ""
       self.split("").each do |char|
+        char_encoding_type = CharshiftHelper.get_encoding(char)
+        encoding_length = CharshiftHelper.get_encoding_length(char_encoding_type)
         current_char_ord = CharshiftHelper.get_ord_by_char(char)
-        shifted_position = CharshiftHelper.get_shift_position(current_char_ord, char_shift_val)
-        output << CharshiftHelper.get_char_by_ord(shifted_position)
+        shifted_position = CharshiftHelper.get_shift_position(current_char_ord, char_shift_val, encoding_length)
+        output << CharshiftHelper.get_char_by_ord(shifted_position, char_encoding_type)
       end
       return output
     end

@@ -12,17 +12,20 @@ describe 'Charshift gem' do | |
     end
   end
 
-  it "shifts all characters the correct number of places on the default ASCII table" do
+  it "shifts all characters the correct number of places for default UTF-8 values" do
+    # UTF-8 has a range of 1114111 characters
     expect(string1.charshift(1)).to eq("Tusjoh!pof")
-    expect(string1.charshift(60)).to eq("\u000F0.%*#\\+*!")
+    expect(string1.charshift(60)).to eq("\u008F°®¥ª£\\«ª¡")
     expect(string1.charshift(-1)).to eq("Rsqhmf\x1Fnmd")
-    expect(string1.charshift(-60)).to eq("\x1786-2+d32)")
+    expect(string1.charshift(-60)).to eq("\u001786-2+􏿣32)")
     expect(string2.charshift(10)).to eq("]")
-    expect(string2.charshift(110)).to eq("A")
-    expect(string2.charshift(900)).to eq("W")
+    expect(string2.charshift(110)).to eq("Á")
+    expect(string2.charshift(900)).to eq("ϗ")
     expect(string2.charshift(-10)).to eq("I")
-    expect(string2.charshift(-110)).to eq("e")
-    expect(string2.charshift(-900)).to eq("O")
+    expect(string2.charshift(-110)).to eq("􏿤")
+    expect(string2.charshift(-900)).to eq("􏳎")
+    expect(string2.charshift(100000000)).to eq("\u{CE1AC}")
+    expect(string2.charshift(-100000000)).to eq("\u{41EF9}")
   end
 
   it "returns an error when given a non fixnum parameter" do

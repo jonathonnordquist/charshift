@@ -35,21 +35,21 @@ describe 'CharshiftHelper module' do
 
   describe 'get_shift_position method' do
     it 'returns the correct position on the character table as determined by the shift value' do
-      expect(CharshiftHelper.get_shift_position(77, 5)).to eq(82)
-      expect(CharshiftHelper.get_shift_position(122, 50)).to eq(44)
-      expect(CharshiftHelper.get_shift_position(110, -10)).to eq(100)
-      expect(CharshiftHelper.get_shift_position(10, -20)).to eq(118)
-      expect(CharshiftHelper.get_shift_position(1, 385)).to eq(2)
-      expect(CharshiftHelper.get_shift_position(1, -250)).to eq(7)
-      expect(CharshiftHelper.get_shift_position(127, 254)).to eq(125)
-      expect(CharshiftHelper.get_shift_position(127, -254)).to eq(1)
+      expect(CharshiftHelper.get_shift_position(77, 5, 1114111)).to eq(82)
+      expect(CharshiftHelper.get_shift_position(122, 50, 1114111)).to eq(172)
+      expect(CharshiftHelper.get_shift_position(110, -10, 1114111)).to eq(100)
+      expect(CharshiftHelper.get_shift_position(10, -20, 1114111)).to eq(1114101)
+      expect(CharshiftHelper.get_shift_position(1, 385, 1114111)).to eq(386)
+      expect(CharshiftHelper.get_shift_position(1, -250, 1114111)).to eq(1113862)
+      expect(CharshiftHelper.get_shift_position(127, 254, 1114111)).to eq(381)
+      expect(CharshiftHelper.get_shift_position(127, -254, 1114111)).to eq(1113984)
     end
   end
 
   describe 'get_char_by_ord method' do
     it 'returns the correct value for a specific ordinal position' do
-      expect(CharshiftHelper.get_char_by_ord(47)).to eq("/")
-      expect(CharshiftHelper.get_char_by_ord(0)).to eq("\x00")
+      expect(CharshiftHelper.get_char_by_ord(47, "UTF-8")).to eq("/")
+      expect(CharshiftHelper.get_char_by_ord(0, "UTF-8")).to eq("\x00")
     end
   end
 
@@ -57,6 +57,13 @@ describe 'CharshiftHelper module' do
     it 'returns the ordinal position for the input character' do
       expect(CharshiftHelper.get_ord_by_char('A')).to eq(65)
       expect(CharshiftHelper.get_ord_by_char(" ")).to eq(32)
+    end
+  end
+
+  describe 'get_encoding method' do
+    it 'returns the encoding type for a given string' do
+      expect(CharshiftHelper.get_encoding('a')).to eq("UTF-8")
+      expect(CharshiftHelper.get_encoding(50000.chr("UTF-32BE"))).to eq("UTF-32BE")
     end
   end
 
