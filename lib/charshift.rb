@@ -1,4 +1,5 @@
 require 'charshifthelper'
+require 'byebug'
 
 class String
   def charshift char_shift_val
@@ -7,8 +8,15 @@ class String
     rescue TypeError => e
       raise
     else
+        # byebug
       output = ""
-      self.split("").each do |char|
+      # encoding: UTF-32BE
+      split_string = []
+
+      self.each_char do |chr|
+        split_string << chr
+      end
+      split_string.each do |char|
         char_encoding_type = CharshiftHelper.get_encoding(char)
         encoding_length = CharshiftHelper.get_encoding_length(char_encoding_type)
         current_char_ord = CharshiftHelper.get_ord_by_char(char)
