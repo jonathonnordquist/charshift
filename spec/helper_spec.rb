@@ -2,7 +2,7 @@ require 'charshifthelper'
 
 describe 'CharshiftHelper module' do
   let(:including_class) { Class.new { extend CharshiftHelper } }
-
+  let(:string1) { "String one" }
   describe 'confirm_fixnum method' do
     let(:type_error) { 'Input value must be of type fixnum' }
 
@@ -75,6 +75,22 @@ describe 'CharshiftHelper module' do
       expect(CharshiftHelper.get_encoding_length("GB18030")).to eq(64767)
       expect(CharshiftHelper.get_encoding_length("Shift_JIS")).to eq(224)
     end
-  end 
+  end
+
+  describe 'encoding_ind_split' do
+    it 'takes a string and returns an array of individual characters' do
+      expect(CharshiftHelper.encoding_ind_split(string1)).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("UTF8-MAC"))).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("Windows-31J"))).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("Emacs-Mule"))).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("IBM862"))).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("macUkraine"))).to eq(["S", "t", "r", "i", "n", "g", " ", "o", "n", "e"])
+      expect(CharshiftHelper.encoding_ind_split(string1.encode("UTF-32LE"))).to eq(["S".encode("UTF-32LE"), "t".encode("UTF-32LE"), 
+                                                                                      "r".encode("UTF-32LE"), "i".encode("UTF-32LE"), 
+                                                                                      "n".encode("UTF-32LE"), "g".encode("UTF-32LE"), 
+                                                                                      " ".encode("UTF-32LE"), "o".encode("UTF-32LE"), 
+                                                                                      "n".encode("UTF-32LE"), "e".encode("UTF-32LE")])
+    end
+  end
 
 end

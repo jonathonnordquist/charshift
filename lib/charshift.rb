@@ -9,11 +9,8 @@ class String
       raise
     else
       output = ""
-      split_string = []
+      split_string = CharshiftHelper.encoding_ind_split(self)
 
-      self.each_char do |chr|
-        split_string << chr
-      end
       split_string.each do |char|
         char_encoding_type = CharshiftHelper.get_encoding(char)
         encoding_length = CharshiftHelper.get_encoding_length(char_encoding_type) - 1

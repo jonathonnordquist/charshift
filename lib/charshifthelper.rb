@@ -8,6 +8,15 @@ module CharshiftHelper
     end
   end
 
+  def self.encoding_ind_split input_string
+    split_string = []
+
+    input_string.each_char do |chr|
+      split_string << chr
+    end
+    return split_string
+  end
+
   def self.get_shift_distance_minus_loops input_val, collection_length
     absloute_input_val = input_val.abs
     remaining_difference = absloute_input_val % collection_length
