@@ -23,6 +23,9 @@ class String
       end
       return output
     end
-      
+  end
+
+  def getEncodingLength
+    return CharshiftHelper.get_encoding_length(self.encoding)
   end
 end
