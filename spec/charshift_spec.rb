@@ -80,6 +80,25 @@ describe 'Charshift gem' do | |
     end
   end
 
+  describe 'charshift! method' do
+    let(:string6) { "P" }
+    let(:string7) { "String seven" }
+    let(:string8) { "P" }
+    let(:string9) { "String seven" }
+
+    it 'executes the character shift in place' do
+      string6.charshift!(1)
+      string7.charshift!(500)
+      expect(string6).to eq("Q")
+      expect(string7).to eq("ɇɨɦɝɢɛȔɧəɪəɢ")
+    end
+
+    it 'returns the value of the shifted string' do
+      expect(string8.charshift!(1)).to eq("Q")
+      expect(string9.charshift!(500)).to eq("ɇɨɦɝɢɛȔɧəɪəɢ")
+    end
+  end
+
   describe 'getEncodingLength method' do
     it 'returns the correct number of available values for a strings current encoding' do
       expect(string1.getEncodingLength).to eq(1114112)

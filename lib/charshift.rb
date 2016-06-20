@@ -36,6 +36,11 @@ class String
     end
   end
 
+  def charshift! char_shift_val, custom_encoding = nil
+    updated_string = charshift char_shift_val, custom_encoding = nil
+    return self.replace(updated_string)
+  end
+
   def getEncodingLength
     return CharshiftHelper.get_encoding_length(self.encoding)
   end
