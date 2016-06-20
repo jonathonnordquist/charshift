@@ -51,14 +51,14 @@ module CharshiftHelper
     while true
       begin guess.chr(encoding)
         if (min > max)
-          return max
+          return max > 0 ? max : 0
         else
           min = guess + 1
           guess = (max + min) / 2
         end
       rescue
         if min > max
-          return max
+          return max > 0 ? max : 0
         else
           max = guess - 1
           guess = (max + min) / 2

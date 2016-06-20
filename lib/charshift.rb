@@ -8,9 +8,7 @@ class String
     rescue TypeError => e
       raise
     else
-        # byebug
       output = ""
-      # encoding: UTF-32BE
       split_string = []
 
       self.each_char do |chr|
