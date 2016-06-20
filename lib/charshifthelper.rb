@@ -84,4 +84,8 @@ module CharshiftHelper
     end
     return true
   end
+
+  def self.check_for_uniqueness string_array
+    return string_array.uniq.length == string_array.length
+  end
 end

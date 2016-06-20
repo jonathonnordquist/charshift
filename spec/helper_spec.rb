@@ -109,6 +109,17 @@ describe 'CharshiftHelper module' do
         expect(CharshiftHelper.check_for_valid_array_elements(["q", "aa", "b", "C"])).to be false
       end
     end
+
+    describe 'check_for_uniqueness method' do
+      it 'returns true if all elements in array are unique' do
+        expect(CharshiftHelper.check_for_uniqueness(["a", "b", "c", "d"])).to be true
+      end
+
+      it 'returns false if any elements in array are not unique' do
+        expect(CharshiftHelper.check_for_uniqueness(["a", "b", "c", "a"])).to be false
+        expect(CharshiftHelper.check_for_uniqueness(["a", "a", "c", "d"])).to be false
+      end
+    end
   end
 
 end
