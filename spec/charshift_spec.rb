@@ -5,7 +5,9 @@ describe 'Charshift gem' do | |
   let(:string2) { "S" }
   let(:string3) { "S".encode("UTF-32BE") }
   let(:type_error) { TypeError }
-  let(:type_error_text) { "Input value must be of type fixnum" }
+  let(:non_fixnum_type_error_text) { "Input value must be of type fixnum" }
+  let(:non_unique_type_error_text) { "All elements in custom encoding must be unique" }
+  let(:invalid_custom_chars_type_error_text) { "Custom encoding must only contain single character string elements" }
 
   describe 'charshift method' do 
     it "returns an object of type string" do
@@ -31,13 +33,37 @@ describe 'Charshift gem' do | |
 
     # end
 
+    it 'returns "TypeError" when given a custom encoding with non unique values' do
+      expect {
+        string1.charshift(5, ["a", "b", "C", "a"])
+      }.to raise_error(type_error, non_unique_type_error_text)
+      expect {
+        string1.charshift(5, ["a", "a", "C", "d"])
+      }.to raise_error(type_error, non_unique_type_error_text)
+    end
+
+    it 'returns "TypeError" when given a custom encoding with invalid values' do
+      expect {
+        string1.charshift(5, [1, 2, "C", "a"])
+      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      expect {
+        string1.charshift(5, [1, "a", 2, "d"])
+      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      expect {
+        string1.charshift(5, ["aa", "a", "C", "d"])
+      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      expect {
+        string1.charshift(5, ["aa", "aa", 2, "d"])
+      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+    end
+
     it "returns an error when given a non fixnum parameter" do
       expect { 
         string1.charshift("aaaa") 
-      }.to raise_error(type_error, type_error_text)
+      }.to raise_error(type_error, non_fixnum_type_error_text)
       expect { 
         string1.charshift(1.0) 
-      }.to raise_error(type_error, type_error_text)
+      }.to raise_error(type_error, non_fixnum_type_error_text)
     end
   end
 
