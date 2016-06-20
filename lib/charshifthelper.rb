@@ -75,4 +75,13 @@ module CharshiftHelper
       end
     end
   end
+
+  def self.check_for_valid_array_elements string_array
+    string_array.each do |chr|
+      if !chr.is_a?(String) || chr.length != 1
+        return false
+      end
+    end
+    return true
+  end
 end

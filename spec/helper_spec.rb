@@ -91,6 +91,24 @@ describe 'CharshiftHelper module' do
                                                                                       " ".encode("UTF-32LE"), "o".encode("UTF-32LE"), 
                                                                                       "n".encode("UTF-32LE"), "e".encode("UTF-32LE")])
     end
+
+    describe 'check_for_valid_array_elements method' do
+      it 'returns true if all elements in an array are single character strings' do
+        expect(CharshiftHelper.check_for_valid_array_elements(["a", "b", "C"])).to be true
+        expect(CharshiftHelper.check_for_valid_array_elements(["a", "b", "1"])).to be true
+        expect(CharshiftHelper.check_for_valid_array_elements(["Q", ":", "0"])).to be true
+      end
+
+      it 'returns false if array contains non string elements' do
+        expect(CharshiftHelper.check_for_valid_array_elements([0, "a", 1, "C"])).to be false
+        expect(CharshiftHelper.check_for_valid_array_elements(["a", 1, "C"])).to be false
+      end
+
+      it 'returns falise if array contains mulicharacter strings' do
+        expect(CharshiftHelper.check_for_valid_array_elements(["aa", "b", "C"])).to be false
+        expect(CharshiftHelper.check_for_valid_array_elements(["q", "aa", "b", "C"])).to be false
+      end
+    end
   end
 
 end
