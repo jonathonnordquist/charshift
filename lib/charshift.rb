@@ -16,7 +16,12 @@ class String
         elsif CharshiftHelper.check_for_uniqueness(custom_encoding) == false
           raise TypeError, "All elements in custom encoding must be unique"
         else
-          return true
+          split_string.each do |char|
+            encoding_length = custom_encoding.length
+            current_char_ord = custom_encoding.index(chr)
+            shifted_position = CharshiftHelper.get_shift_position(current_char_ord, char_shift_val, encoding_length)
+            output << custom_encoding[shifted_position]
+          end
         end
       else
         split_string.each do |char|

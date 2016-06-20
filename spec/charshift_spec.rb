@@ -4,10 +4,13 @@ describe 'Charshift gem' do | |
   let(:string1) { "String one" }
   let(:string2) { "S" }
   let(:string3) { "S".encode("UTF-32BE") }
+  let(:string4) { "aqrl?Q:7g" }
+  let(:string5) { "q" }
   let(:type_error) { TypeError }
   let(:non_fixnum_type_error_text) { "Input value must be of type fixnum" }
   let(:non_unique_type_error_text) { "All elements in custom encoding must be unique" }
   let(:invalid_custom_chars_type_error_text) { "Custom encoding must only contain single character string elements" }
+  let(:custom_encoding1) { ["a", "g", "q", "r", "l", "k", "?", "Q", ":", "]", "7", "9"] }
 
   describe 'charshift method' do 
     it "returns an object of type string" do
@@ -28,6 +31,15 @@ describe 'Charshift gem' do | |
       expect(string2.charshift(100000000)).to eq("\u{CE1AC}")
       expect(string2.charshift(-100000000)).to eq("\u{41EF9}")
     end
+
+    it "shifts all characters the correct number of places when given a custom encoding" do
+      expect(string5.charshift(1, custom_encoding1)).to eq("r")
+      expect(string5.charshift(50, custom_encoding1)).to eq("l")
+      expect(string5.charshift(-2, custom_encoding1)).to eq("a")
+      expect(string5.charshift(-52, custom_encoding1)).to eq("7")      
+    end
+
+
     # it "shifts all characters the correct number of places for non UTF-8 encodings" do
     #   expect('string3.charshift(350000000)').to end_with('{14DC93D3}')
 
