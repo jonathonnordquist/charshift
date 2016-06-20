@@ -12,9 +12,9 @@ class String
       split_string = CharshiftHelper.encoding_ind_split(self)
       if custom_encoding
         if CharshiftHelper.check_for_valid_array_elements(custom_encoding) == false
-          raise TypeError, "Custom encoding must only contain single character string elements"
+          raise ArgumentError, "Custom encoding must only contain single character string elements"
         elsif CharshiftHelper.check_for_uniqueness(custom_encoding) == false
-          raise TypeError, "All elements in custom encoding must be unique"
+          raise ArgumentError, "All elements in custom encoding must be unique"
         else
           split_string.each do |char|
             encoding_length = custom_encoding.length

@@ -7,9 +7,10 @@ describe 'Charshift gem' do | |
   let(:string4) { "aqrl?Q:7g" }
   let(:string5) { "q" }
   let(:type_error) { TypeError }
+  let(:argument_error) { ArgumentError }
   let(:non_fixnum_type_error_text) { "Input value must be of type fixnum" }
-  let(:non_unique_type_error_text) { "All elements in custom encoding must be unique" }
-  let(:invalid_custom_chars_type_error_text) { "Custom encoding must only contain single character string elements" }
+  let(:non_unique_argument_error_text) { "All elements in custom encoding must be unique" }
+  let(:invalid_custom_chars_argument_error_text) { "Custom encoding must only contain single character string elements" }
   let(:custom_encoding1) { ["a", "g", "q", "r", "l", "k", "?", "Q", ":", "]", "7", "9"] }
 
   describe 'charshift method' do 
@@ -48,25 +49,25 @@ describe 'Charshift gem' do | |
     it 'returns "TypeError" when given a custom encoding with non unique values' do
       expect {
         string1.charshift(5, ["a", "b", "C", "a"])
-      }.to raise_error(type_error, non_unique_type_error_text)
+      }.to raise_error(argument_error, non_unique_argument_error_text)
       expect {
         string1.charshift(5, ["a", "a", "C", "d"])
-      }.to raise_error(type_error, non_unique_type_error_text)
+      }.to raise_error(argument_error, non_unique_argument_error_text)
     end
 
     it 'returns "TypeError" when given a custom encoding with invalid values' do
       expect {
         string1.charshift(5, [1, 2, "C", "a"])
-      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
       expect {
         string1.charshift(5, [1, "a", 2, "d"])
-      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
       expect {
         string1.charshift(5, ["aa", "a", "C", "d"])
-      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
       expect {
         string1.charshift(5, ["aa", "aa", 2, "d"])
-      }.to raise_error(type_error, invalid_custom_chars_type_error_text)
+      }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
     end
 
     it "returns an error when given a non fixnum parameter" do
