@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
                   EOF
   s.authors     = ["Jonathon Nordquist"]
-  s.email       = 'jonathon.nordquist@gmail.com'
+  s.email       = 'https://github.com/cugamer/charshift'
   s.files       = ["lib/charshift.rb", "lib/charshifthelper.rb"]
   s.homepage    =
     'http://www.jonathonnordquist.com'
