@@ -3,7 +3,7 @@ Charshift
 
 What does this do?
 ------------------
-Charshift, as the name suggests, shifts characters.  More specifically each character has an ordinal indicator (raw number) which denotes its position for the strings character encoding.  For example, in Rubys default UTF-8 character encoding, the character "S" has an ordinal value of 83.  This encoding contains thousands of characters, what charshift does is takes an input string and shifts each character in the string to a higher or lower position in the encoding.  Thus, calling  returns a value of .
+Charshift, as the name suggests, shifts characters.  More specifically each character has an ordinal indicator (raw number) which denotes its position for the strings character encoding.  For example, in Rubys default UTF-8 character encoding, the character "S" has an ordinal value of 83.  This encoding contains thousands of characters, what charshift does is takes an input string and shifts each character in the string to a higher or lower position in the encoding.
 
 Installation
 ------------
