@@ -1,5 +1,5 @@
 require 'charshifthelper'
-=
+
 class String
   def charshift char_shift_val, custom_encoding = nil
     begin
