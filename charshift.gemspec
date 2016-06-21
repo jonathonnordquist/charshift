@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'charshift'
-  s.version     = '0.2.1'
+  s.version     = '0.2.2'
   s.date        = '2016-06-10'
   s.summary     = "Facilitate character change by ordinal position"
   s.description = <<-EOF
@@ -23,9 +23,9 @@ Gem::Specification.new do |s|
 
                   EOF
   s.authors     = ["Jonathon Nordquist"]
-  s.email       = 'https://github.com/cugamer/charshift'
+  s.email       = 'jonathon.nordquist.com'
   s.files       = ["lib/charshift.rb", "lib/charshifthelper.rb"]
   s.homepage    =
-    'http://www.jonathonnordquist.com'
+    'https://github.com/cugamer/charshift'
   s.license       = 'MIT'
 end
