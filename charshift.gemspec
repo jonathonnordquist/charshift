@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'charshift'
-  s.version     = '0.2.0'
+  s.version     = '0.2.1'
   s.date        = '2016-06-10'
   s.summary     = "Facilitate character change by ordinal position"
   s.description = <<-EOF
