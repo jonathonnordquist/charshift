@@ -19,6 +19,9 @@ class String
           split_string.each do |char|
             encoding_length = custom_encoding.length
             current_char_ord = custom_encoding.index(chr)
+            if current_char_ord.nil?
+              raise RuntimeError, "Given custom encoding does not contain all characters in the target string"
+            end
             shifted_position = CharshiftHelper.get_shift_position(current_char_ord, char_shift_val, encoding_length)
             output << custom_encoding[shifted_position]
           end

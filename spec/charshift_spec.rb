@@ -8,6 +8,8 @@ describe 'Charshift gem' do | |
   let(:string5) { "q" }
   let(:type_error) { TypeError }
   let(:argument_error) { ArgumentError }
+  let(:runtime_error) { RuntimeError }
+  let(:missing_chars_runtime_error_text) { "Given custom encoding does not contain all characters in the target string" }
   let(:non_fixnum_type_error_text) { "Input value must be of type fixnum" }
   let(:non_unique_argument_error_text) { "All elements in custom encoding must be unique" }
   let(:invalid_custom_chars_argument_error_text) { "Custom encoding must only contain single character string elements" }
@@ -46,7 +48,7 @@ describe 'Charshift gem' do | |
 
     # end
 
-    it 'returns "TypeError" when given a custom encoding with non unique values' do
+    it 'raises "TypeError" when given a custom encoding with non unique values' do
       expect {
         string1.charshift(5, ["a", "b", "C", "a"])
       }.to raise_error(argument_error, non_unique_argument_error_text)
@@ -55,7 +57,7 @@ describe 'Charshift gem' do | |
       }.to raise_error(argument_error, non_unique_argument_error_text)
     end
 
-    it 'returns "TypeError" when given a custom encoding with invalid values' do
+    it 'raises "TypeError" when given a custom encoding with invalid values' do
       expect {
         string1.charshift(5, [1, 2, "C", "a"])
       }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
@@ -70,7 +72,13 @@ describe 'Charshift gem' do | |
       }.to raise_error(argument_error, invalid_custom_chars_argument_error_text)
     end
 
-    it "returns an error when given a non fixnum parameter" do
+    it 'raises "RuntimeError" when given a custom encoding which does not contain all characters present in a string' do
+      expect {
+        string1.charshift(5, ["a", "g", "k", "t", "W", "!", "}", "D", "Y"])
+      }.to raise_error(runtime_error, missing_chars_runtime_error_text)
+    end
+
+    it "raises an error when given a non fixnum parameter" do
       expect { 
         string1.charshift("aaaa") 
       }.to raise_error(type_error, non_fixnum_type_error_text)
