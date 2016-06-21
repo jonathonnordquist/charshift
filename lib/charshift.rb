@@ -1,6 +1,5 @@
 require 'charshifthelper'
-require 'byebug'
-
+=
 class String
   def charshift char_shift_val, custom_encoding = nil
     begin
@@ -16,9 +15,9 @@ class String
         elsif CharshiftHelper.check_for_uniqueness(custom_encoding) == false
           raise ArgumentError, "All elements in custom encoding must be unique"
         else
-          split_string.each do |char|
+          split_string.each_with_index do |char, index|
             encoding_length = custom_encoding.length
-            current_char_ord = custom_encoding.index(chr)
+            current_char_ord = custom_encoding.index(char)
             if current_char_ord.nil?
               raise RuntimeError, "Given custom encoding does not contain all characters in the target string"
             end

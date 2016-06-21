@@ -31,7 +31,9 @@ module CharshiftHelper
     collection_length = encoding_length
     shift_difference = self.get_shift_distance_minus_loops(shift_val, collection_length)
     start_plus_shift = starting_pos + shift_difference
-    if start_plus_shift > collection_length
+    if shift_difference + starting_pos == encoding_length
+      return 0
+    elsif start_plus_shift > collection_length
       return 0 + start_plus_shift - collection_length
     elsif start_plus_shift < 0
       return collection_length + start_plus_shift

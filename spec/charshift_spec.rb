@@ -6,6 +6,7 @@ describe 'Charshift gem' do | |
   let(:string3) { "S".encode("UTF-32BE") }
   let(:string4) { "aqrl?Q:7g" }
   let(:string5) { "q" }
+  let(:string10) {  "Hello, World!" }
   let(:type_error) { TypeError }
   let(:argument_error) { ArgumentError }
   let(:runtime_error) { RuntimeError }
@@ -14,6 +15,7 @@ describe 'Charshift gem' do | |
   let(:non_unique_argument_error_text) { "All elements in custom encoding must be unique" }
   let(:invalid_custom_chars_argument_error_text) { "Custom encoding must only contain single character string elements" }
   let(:custom_encoding1) { ["a", "g", "q", "r", "l", "k", "?", "Q", ":", "]", "7", "9"] }
+  let(:custom_encoding2) { ["a", "W", "g", "d", " ", "H", "l", "k", "e", "o", "t", "!", ",", "r", "}", "D", "Y"] }
 
   describe 'charshift method' do 
     it "returns an object of type string" do
@@ -39,7 +41,11 @@ describe 'Charshift gem' do | |
       expect(string5.charshift(1, custom_encoding1)).to eq("r")
       expect(string5.charshift(50, custom_encoding1)).to eq("l")
       expect(string5.charshift(-2, custom_encoding1)).to eq("a")
-      expect(string5.charshift(-52, custom_encoding1)).to eq("7")      
+      expect(string5.charshift(-52, custom_encoding1)).to eq("7")
+      expect(string10.charshift(10, custom_encoding2)).to eq("DWYYgH}!glYr ")
+      expect(string10.charshift(-10, custom_encoding2)).to eq(",DrrYg!eYdrtW")
+      expect(string10.charshift(30, custom_encoding2)).to eq("W ggHea}HogYk")
+      expect(string10.charshift(-30, custom_encoding2)).to eq("o,ttrYeHratkD")
     end
 
 
