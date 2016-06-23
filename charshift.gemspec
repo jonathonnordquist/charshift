@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'charshift'
-  s.version     = '0.2.2'
+  s.version     = '0.2.3'
   s.date        = '2016-06-10'
   s.summary     = "Facilitate character change by ordinal position"
   s.description = <<-EOF
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
                   parameter and charshift will work on the string using that
                   set instead of the strings native encoding.
 
-                  Charshift also includes a '.getEncodingLength' method which
+                  Charshift also includes a '.get_encoding_length' method which
                   returns the number of of characters which a given strings 
                   encoding contains.  Finally, strings can be shifted in place
                   using the '.charshift!' method.
