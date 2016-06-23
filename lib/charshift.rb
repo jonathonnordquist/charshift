@@ -43,7 +43,7 @@ class String
     return self.replace(updated_string)
   end
 
-  def getEncodingLength
+  def get_encoding_length
     return CharshiftHelper.get_encoding_length(self.encoding)
   end
 end
