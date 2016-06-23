@@ -46,11 +46,11 @@ Charshift also supports "custom encodings."  If you wish to use your own list of
 
 The value returned does not modify the original string, if you want to modify the string in place simply call '.charshift!' on the target string.
 
-Finally, if you just want to see the number of characters for a strings encoding, use the '.getEncodingLength' method.
+Finally, if you just want to see the number of characters for a strings encoding, use the '.get_encoding_length' method.
 
 ```ruby
- > "Hello, World!".getEncodingLength
+ > "Hello, World!".get_encoding_length
 => 1114112
- > "Hello, World!".encode("ISO-2022-JP").getEncodingLength
+ > "Hello, World!".encode("ISO-2022-JP").get_encoding_length
 => 256
 ```

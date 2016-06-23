@@ -113,15 +113,15 @@ describe 'Charshift gem' do | |
     end
   end
 
-  describe 'getEncodingLength method' do
+  describe 'get_encoding_length method' do
     it 'returns the correct number of available values for a strings current encoding' do
-      expect(string1.getEncodingLength).to eq(1114112)
-      expect(string1.encode("UTF8-MAC").getEncodingLength).to eq(1114112)
-      expect(string1.encode("Windows-31J").getEncodingLength).to eq(224)
-      expect(string1.encode("Emacs-Mule").getEncodingLength).to eq(128)
-      expect(string1.encode("IBM862").getEncodingLength).to eq(256)
-      expect(string1.encode("macUkraine").getEncodingLength).to eq(256)
-      expect(string1.encode("UTF-32LE").getEncodingLength).to eq(4294967296)
+      expect(string1.get_encoding_length).to eq(1114112)
+      expect(string1.encode("UTF8-MAC").get_encoding_length).to eq(1114112)
+      expect(string1.encode("Windows-31J").get_encoding_length).to eq(224)
+      expect(string1.encode("Emacs-Mule").get_encoding_length).to eq(128)
+      expect(string1.encode("IBM862").get_encoding_length).to eq(256)
+      expect(string1.encode("macUkraine").get_encoding_length).to eq(256)
+      expect(string1.encode("UTF-32LE").get_encoding_length).to eq(4294967296)
     end
   end
 
